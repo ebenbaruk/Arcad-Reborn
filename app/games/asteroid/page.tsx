@@ -394,30 +394,44 @@ export default function AsteroidGame() {
   }, [gameStarted, gameOver, nextLevel, createAsteroid]);
 
   return (
-    <div className="min-h-screen bg-[#EAE7E0] flex flex-col items-center justify-center p-8">
-      <div className="mb-3 flex items-center justify-between w-full max-w-[900px]">
-        <Link
-          href="/"
-          className="text-zinc-600 hover:text-zinc-800 transition-colors font-medium"
-        >
-          ← Back to Home
-        </Link>
-        <h1 className="text-4xl font-bold text-zinc-800">Asteroid</h1>
-        <div className="w-32" />
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -inset-[10px] opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
+          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
+        </div>
       </div>
 
-      <div className="mb-6 text-center text-zinc-600">
-        <p>Destroy all asteroids to advance to the next level!</p>
-      </div>
+      <div className="relative z-10 flex flex-col items-center justify-center p-8 min-h-screen">
+        <div className="mb-3 flex items-center justify-between w-full max-w-[900px]">
+          <Link
+            href="/"
+            className="text-purple-300 hover:text-purple-100 transition-colors font-medium flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+          </Link>
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Asteroid 🚀</h1>
+          <div className="w-32" />
+        </div>
 
-      <div className="relative bg-black rounded-lg shadow-2xl overflow-hidden">
+        <div className="mb-6 text-center text-purple-200">
+          <p>Destroy all asteroids to advance to the next level!</p>
+        </div>
+
+        <div className="relative rounded-xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25" />
         <canvas
           ref={canvasRef}
           className="block"
         />
 
         {/* HUD */}
-        <div className="absolute top-6 left-6 text-white space-y-2">
+        <div className="absolute top-6 left-6 text-white space-y-2 bg-slate-900/50 backdrop-blur-xl p-4 rounded-xl border border-white/10">
           <div className="text-2xl font-bold">Score: {score}</div>
           <div className="text-xl">Level: {level}</div>
           <div className="flex gap-2 items-center">
@@ -430,17 +444,17 @@ export default function AsteroidGame() {
 
         {/* Instructions overlay */}
         {!gameStarted && (
-          <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
-            <div className="text-center text-white space-y-6 p-8">
-              <h2 className="text-5xl font-bold mb-8">Asteroid</h2>
-              <div className="space-y-3 text-xl">
+          <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center">
+            <div className="text-center text-white space-y-6 p-8 bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-white/10 max-w-md">
+              <h2 className="text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Asteroid</h2>
+              <div className="space-y-3 text-xl text-purple-200">
                 <p>← → Arrow keys to rotate</p>
                 <p>↑ Arrow key to thrust</p>
                 <p>SPACE to shoot</p>
               </div>
               <button
                 onClick={startGame}
-                className="mt-8 px-8 py-4 bg-green-600 hover:bg-green-700 text-white text-2xl font-bold rounded-lg transition-colors"
+                className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-2xl font-bold rounded-xl transition-all transform hover:scale-105 shadow-lg"
               >
                 Start Game
               </button>
@@ -450,21 +464,39 @@ export default function AsteroidGame() {
 
         {/* Game over overlay */}
         {gameOver && (
-          <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
-            <div className="text-center text-white space-y-6 p-8">
-              <h2 className="text-5xl font-bold mb-4">Game Over</h2>
-              <p className="text-3xl">Final Score: {score}</p>
-              <p className="text-2xl">Level Reached: {level}</p>
+          <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-md flex items-center justify-center">
+            <div className="text-center text-white space-y-6 p-8 bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-white/10 max-w-md">
+              <h2 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Game Over</h2>
+              <p className="text-3xl text-purple-200">Final Score: {score}</p>
+              <p className="text-2xl text-purple-300">Level Reached: {level}</p>
               <button
                 onClick={startGame}
-                className="mt-8 px-8 py-4 bg-green-600 hover:bg-green-700 text-white text-2xl font-bold rounded-lg transition-colors"
+                className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-2xl font-bold rounded-xl transition-all transform hover:scale-105 shadow-lg"
               >
                 Play Again
               </button>
             </div>
           </div>
         )}
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </div>
   );
 }

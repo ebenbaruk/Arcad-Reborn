@@ -1,34 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arcad Reborn
+
+Classic arcade games reimagined for the modern era with beautiful animations and effects.
+
+## About
+
+Arcad Reborn is a collection of 6 classic arcade games built with modern web technologies, featuring a stunning purple/pink gradient design with animated backgrounds and glassmorphism effects.
+
+## Games
+
+### 🚀 Asteroid (Featured)
+Navigate your spaceship through an asteroid field. Shoot and destroy asteroids while avoiding collisions.
+
+**Controls:**
+- Arrow keys to move
+- Space to shoot
+- Thrust forward, rotate left/right
+
+### 🐍 Snake
+Classic snake game with a modern twist. Eat food, grow longer, and avoid hitting yourself!
+
+**Controls:**
+- Arrow keys to control direction
+- The snake gets faster as you eat more food
+
+### 🎮 Tetris
+Stack blocks and clear lines in this timeless puzzle game.
+
+**Controls:**
+- ← → Arrow keys to move
+- ↑ Arrow key to rotate
+- ↓ Arrow key for soft drop
+- Space for hard drop
+
+### 👾 Space Invaders
+Defend Earth from waves of alien invaders. Shoot them down before they reach you!
+
+**Controls:**
+- ← → Arrow keys to move
+- Space to shoot
+- Use shields for protection
+
+### 🛸 Galaga
+Battle against diving alien fighters in this arcade classic. Watch out for their attack patterns!
+
+**Controls:**
+- ← → Arrow keys to move
+- Space to shoot
+- Avoid diving enemies
+
+### ⚡ Gravity Ball
+Control gravity to navigate through challenging levels. Change direction to reach the goal!
+
+**Controls:**
+- Arrow keys or WASD to change gravity direction
+- Navigate to the green goal square
+- Collect yellow orbs for points
+- Avoid red spikes
+
+## Features
+
+- 🎨 Modern purple/pink gradient design
+- ✨ Animated blob backgrounds
+- 🪟 Glassmorphism UI elements
+- 📱 Responsive layout
+- 🎯 High score tracking
+- 🌟 Smooth animations and transitions
+- 🎮 Classic gameplay mechanics
+
+## Technologies
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **HTML5 Canvas** - Game rendering
+- **React Hooks** - State management
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/ebenbaruk/Arcad-Reborn.git
+cd Arcad-Reborn
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+arcad-reborn/
+├── app/
+│   ├── games/
+│   │   ├── asteroid/
+│   │   ├── snake/
+│   │   ├── tetris/
+│   │   ├── space-invaders/
+│   │   ├── galaga/
+│   │   └── gravity-ball/
+│   ├── page.tsx          # Main landing page
+│   └── layout.tsx
+├── public/
+└── package.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-## Deploy on Vercel
+Feel free to open issues or submit pull requests for improvements!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License - feel free to use this project for learning or personal use.
+
+---
+
+Made with passion for classic gaming

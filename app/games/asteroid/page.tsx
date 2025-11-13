@@ -129,14 +129,18 @@ export default function AsteroidGame() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    canvas.width = 1200;
-    canvas.height = 800;
+    canvas.width = 900;
+    canvas.height = 600;
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Prevent arrow keys and space from scrolling the page
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+        e.preventDefault();
+      }
+
       gameStateRef.current.keys[e.key] = true;
 
       if (e.key === ' ' && gameStarted && !gameOver) {
-        e.preventDefault();
         const ship = gameStateRef.current.ship;
         if (ship && gameStateRef.current.bullets.length < 5) {
           gameStateRef.current.bullets.push({
@@ -153,6 +157,10 @@ export default function AsteroidGame() {
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
+      // Prevent arrow keys from scrolling the page
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+      }
       gameStateRef.current.keys[e.key] = false;
     };
 
@@ -387,7 +395,7 @@ export default function AsteroidGame() {
 
   return (
     <div className="min-h-screen bg-[#EAE7E0] flex flex-col items-center justify-center p-8">
-      <div className="mb-6 flex items-center justify-between w-full max-w-[1200px]">
+      <div className="mb-3 flex items-center justify-between w-full max-w-[900px]">
         <Link
           href="/"
           className="text-zinc-600 hover:text-zinc-800 transition-colors font-medium"
@@ -396,6 +404,10 @@ export default function AsteroidGame() {
         </Link>
         <h1 className="text-4xl font-bold text-zinc-800">Asteroid</h1>
         <div className="w-32" />
+      </div>
+
+      <div className="mb-6 text-center text-zinc-600">
+        <p>Destroy all asteroids to advance to the next level!</p>
       </div>
 
       <div className="relative bg-black rounded-lg shadow-2xl overflow-hidden">
@@ -452,10 +464,6 @@ export default function AsteroidGame() {
             </div>
           </div>
         )}
-      </div>
-
-      <div className="mt-6 text-center text-zinc-600">
-        <p>Destroy all asteroids to advance to the next level!</p>
       </div>
     </div>
   );
